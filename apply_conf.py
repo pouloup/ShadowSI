@@ -14,7 +14,8 @@ if __name__ == "__main__":
         try:
             conf_file = parsed[service]["conf_file"]
         except:
-            print(f"configuration file for {service}, not found. Continuing.")
+            print(
+                f"configuration file for {service}, not provided. Continuing.")
             continue
         # end try
 
@@ -32,6 +33,7 @@ if __name__ == "__main__":
 
                 with open(root + "/" + conf_file.replace(".tmpl", ""), 'w') as file:
                     file.write(data)
+                    print(f"configuration file for {service} done.")
                 # end with
             # end if
         # end for

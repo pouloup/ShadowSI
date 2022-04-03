@@ -1,15 +1,23 @@
 # here conf_file field name should not be changed
-# as it is used to retrieved service associated configuration files
+# as it is used to retrieve service associated configuration files
 
 name = "confs file for Shadow SI"
+
+[heimdall]
 
 [authelia]
 conf_file = "configuration.yml.tmpl"
 HOST = "0.0.0.0"
 PORT = "9091"
-DOMAIN_URL = "arrakis.local"
+DOMAIN_URL = "arrakis-local.duckdns.org"
 
-[swag]
-conf_file = "hey"
-VAR1 = "fuck"
-VARN = "putin"
+[freeipa]
+conf_file = "docker-compose.yml.tmpl"
+HOSTNAME = "ipa"
+REALM_NAME = "EXAMPLE.COM"
+DOMAIN_NAME = "example.com"
+DNS_1 = "8.8.8.8"
+DNS_2 = "1.1.1.1"
+LOCAL_DNS = "127.0.0.11"
+SERVER_IP = "127.0.0.1"
+DEFAULT_PASSWORD = "IN54N3LEYSTRONGPASSWORD"

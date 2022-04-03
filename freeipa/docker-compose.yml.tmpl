@@ -1,0 +1,69 @@
+version: '3.6'
+services:
+  freeipa:
+
+    image: freeipa/freeipa-server:centos-8-stream
+    hostname: <HOSTNAME>
+    domainname: <DOMAIN_NAME>
+    container_name: freeipa
+    # dns:
+    #   - <DNS_1>
+    #   - <DNS_2>
+    # extra_hosts:
+    #   - "<HOSTNAME>.<DOMAIN_NAME>:<SERVER_IP>"
+    restart: unless-stopped
+    tty: true
+    stdin_open: true
+    privileged: true
+    # read_only: true
+
+    environment:
+      - IPA_SERVER_HOSTNAME=<HOSTNAME>.<DOMAIN_NAME>
+      - IPA_SERVER_IP=<SERVER_IP>
+      - PASSWORD=<DEFAULT_PASSWORD>
+      # - DNS=<LOCAL_DNS>
+
+    command:
+      - -U
+      - --domain=<DOMAIN_NAME>
+      - --realm=<REALM_NAME>
+      - --http-pin=<DEFAULT_PASSWORD>
+      - --dirsrv-pin=<DEFAULT_PASSWORD>
+      - --ds-password=<DEFAULT_PASSWORD>
+      - --admin-password=<DEFAULT_PASSWORD>
+      - --no-host-dns
+      #- --no-dnssec-validation
+      #- --setup-dns
+      #- --auto-forwarders
+      #- --allow-zone-overlap
+      - --unattended
+
+    sysctls:
+      - net.ipv6.conf.all.disable_ipv6=0
+
+    # networks:
+    #   ipa:
+    #     ipv4_address: <SERVER_IP>
+
+    volumes:
+      - ./data:/data
+      - ./logs:/var/logs
+      # - /sys/fs/cgroup:/sys/fs/cgroup:ro
+
+    tmpfs:
+      - /run
+      - /var/cache
+      - /tmp
+
+    cap_add:
+      - SYS_TIME
+      - NET_ADMIN
+
+# networks:
+#   ipa:
+#     driver: bridge
+#     driver_opts:
+#       com.docker.network.driver.mtu: 1300
+#     ipam:
+#       config:
+#         - subnet: "<SERVER_IP>/24"

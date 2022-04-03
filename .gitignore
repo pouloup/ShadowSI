@@ -128,4 +128,7 @@ dmypy.json
 # Pyre type checker
 .pyre/
 
-swaut/swag_conf/*
+portainer/portainer_data/*
+freeip/data/*
+freeip/logs/*
+heimdall/config/*
