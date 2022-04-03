@@ -1,0 +1,47 @@
+---
+version: "2.1"
+
+########################################################################################################################
+# SERVICES #############################################################################################################
+########################################################################################################################
+services:
+  ######################################################################################################################
+  # SWAG ###############################################################################################################
+  ######################################################################################################################
+  swag:
+    image: linuxserver/swag
+    container_name: swag
+    cap_add:
+      - NET_ADMIN
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Europe/Paris
+      - URL=swag-local.duckdns.org
+      - SUBDOMAINS=wildcard
+      - VALIDATION=dns
+      # - DNSPLUGIN=cloudflare #optional
+      - PROPAGATION= #optional
+      - DUCKDNSTOKEN= #b0bec52d-249d-4d16-84cc-c94aec6181d9 #optional
+      - EMAIL= #optional
+      - ONLY_SUBDOMAINS=false #optional
+      - EXTRA_DOMAINS= #optional
+      - STAGING=false #optional
+    volumes:
+      - /home/vbox/dev/ShadowSI/SWAG/swag_conf:/config
+    ports:
+      - 443:443
+      - 80:80 #optional
+    restart: unless-stopped
+
+  ######################################################################################################################
+  # AUTHELIA ###########################################################################################################
+  ######################################################################################################################
+  authelia:
+    image: authelia/authelia:4.21.0
+    container_name: authelia
+    environment:
+      - TZ=Europe/Paris
+    volumes:
+      - /home/vbox/dev/ShadowSI/SWAG/authelia_conf:/config
+    restart: unless-stopped

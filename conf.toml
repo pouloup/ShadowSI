@@ -1,0 +1,15 @@
+# here conf_file field name should not be changed
+# as it is used to retrieved service associated configuration files
+
+name = "confs file for Shadow SI"
+
+[authelia]
+conf_file = "configuration.yml.tmpl"
+HOST = "0.0.0.0"
+PORT = "9091"
+DOMAIN_URL = "arrakis.local"
+
+[swag]
+conf_file = "hey"
+VAR1 = "fuck"
+VARN = "putin"
