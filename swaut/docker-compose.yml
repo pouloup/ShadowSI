@@ -17,18 +17,18 @@ services:
       - PUID=1000
       - PGID=1000
       - TZ=Europe/Paris
-      - URL=swag-local.duckdns.org
+      - URL=swag.arrakis.local
       - SUBDOMAINS=wildcard
       - VALIDATION=dns
-      # - DNSPLUGIN=cloudflare #optional
+      - DNSPLUGIN=cloudflare #optional
       - PROPAGATION= #optional
-      - DUCKDNSTOKEN= #b0bec52d-249d-4d16-84cc-c94aec6181d9 #optional
+      - DUCKDNSTOKEN= #optional
       - EMAIL= #optional
       - ONLY_SUBDOMAINS=false #optional
       - EXTRA_DOMAINS= #optional
       - STAGING=false #optional
     volumes:
-      - /home/vbox/dev/ShadowSI/SWAG/swag_conf:/config
+      - /home/vbox/dev/ShadowSI/swaut/swag_conf:/config
     ports:
       - 443:443
       - 80:80 #optional
@@ -43,5 +43,5 @@ services:
     environment:
       - TZ=Europe/Paris
     volumes:
-      - /home/vbox/dev/ShadowSI/SWAG/authelia_conf:/config
+      - /home/vbox/dev/ShadowSI/swaut/authelia_conf:/config
     restart: unless-stopped
