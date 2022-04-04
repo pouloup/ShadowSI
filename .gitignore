@@ -129,6 +129,6 @@ dmypy.json
 .pyre/
 
 portainer/portainer_data/*
-freeip/data/*
-freeip/logs/*
+freeipa/data/*
+freeipa/logs/*
 heimdall/config/*

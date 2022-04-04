@@ -3,7 +3,6 @@
 
 name = "confs file for Shadow SI"
 
-[heimdall]
 
 [authelia]
 conf_file = "configuration.yml.tmpl"
@@ -21,3 +20,7 @@ DNS_2 = "1.1.1.1"
 LOCAL_DNS = "127.0.0.11"
 SERVER_IP = "127.0.0.1"
 DEFAULT_PASSWORD = "IN54N3LEYSTRONGPASSWORD"
+
+[heimdall]
+
+[portainer]

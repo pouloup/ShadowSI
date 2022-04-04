@@ -26,7 +26,7 @@ services:
     command:
       - -U
       - --domain=example.com
-      - --realm=example.com
+      - --realm=EXAMPLE.COM
       - --http-pin=IN54N3LEYSTRONGPASSWORD
       - --dirsrv-pin=IN54N3LEYSTRONGPASSWORD
       - --ds-password=IN54N3LEYSTRONGPASSWORD
